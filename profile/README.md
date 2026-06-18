@@ -36,7 +36,7 @@ Our codebase is separated into independent, highly focused repositories to ensur
 *   **[chat-service](https://github.com/viksa-ai/chat-service)**: Run orchestrator, agent execution loop, run-event log, and live debugger controller.
 *   **[pulse-service](https://github.com/viksa-ai/pulse-service)**: Temporal workflow launcher and execution plumbing.
 *   **[hosted-images-service](https://github.com/viksa-ai/hosted-images-service)**: Docker images and Temporal workers (`chrona-worker-cloud` and `chrona-worker-secure`) for secure agent code execution.
-*   **[volt-service](https://github.com/viksa-ai/volt-service)**: Volt Slack integration, Slack bot, and interactive approval components.
+*   **volt-engine-service**: Volt Channel Hub (Slack, Teams, Telegram, WhatsApp, Instagram webhooks) and channel turn engine.
 *   **[volt-engine-service](https://github.com/viksa-ai/volt-engine-service)**: Core Volt execution engine and high-performance Redis prompt cache.
 *   **[marketplace-service](https://github.com/viksa-ai/marketplace-service)**: Public and private agent/workforce listings, installations, and billing provider integrations.
 *   **[workflow-service](https://github.com/viksa-ai/workflow-service)**: Multi-agent workflow orchestration and state tracking.
