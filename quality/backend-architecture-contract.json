@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "required_layers": [
+    "domain",
+    "application",
+    "ports",
+    "infrastructure",
+    "entrypoints",
+    "bootstrap"
+  ],
+  "repositories": [
+    {"path": "auth-service", "package": "viksa_auth"},
+    {"path": "builder-service", "package": "viksa_builder"},
+    {"path": "chat-service", "package": "viksa_chat"},
+    {"path": "devspace-service", "package": "viksa_devspace"},
+    {"path": "directory-sync-service", "package": "viksa_directory_sync"},
+    {"path": "headless-service", "package": "viksa_headless"},
+    {
+      "path": "hosted-images-service",
+      "package": "viksa_hosted_images",
+      "legacy_source_roots": [
+        "chrona-builder",
+        "chrona-worker-cloud",
+        "chrona-worker-secure"
+      ]
+    },
+    {"path": "marketplace-service", "package": "viksa_marketplace"},
+    {"path": "mcp-gateway-service", "package": "viksa_mcp_gateway"},
+    {"path": "pulse-service", "package": "viksa_pulse"},
+    {"path": "scheduler-service", "package": "viksa_scheduler"},
+    {"path": "trace-service", "package": "viksa_trace"},
+    {"path": "volt-engine-service", "package": "viksa_volt_engine"},
+    {"path": "worker-service", "package": "viksa_worker"},
+    {"path": "workflow-service", "package": "viksa_workflow"}
+  ],
+  "legacy_source_directories": [
+    "api",
+    "common",
+    "config",
+    "constants",
+    "dependencies",
+    "jobs",
+    "mcp_bridge",
+    "models",
+    "objects",
+    "repositories",
+    "security",
+    "services",
+    "tasks",
+    "utils",
+    "validators"
+  ],
+  "framework_imports_forbidden_in_domain": [
+    "fastapi",
+    "starlette",
+    "pydantic",
+    "motor",
+    "pymongo",
+    "redis",
+    "httpx",
+    "requests",
+    "temporalio",
+    "kubernetes"
+  ],
+  "resource_constructor_suffixes": [
+    "Client",
+    "Repository",
+    "Service",
+    "Gateway",
+    "Producer",
+    "Consumer",
+    "Session",
+    "Pool"
+  ]
+}

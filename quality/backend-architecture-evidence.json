@@ -1,0 +1,37 @@
+{
+  "duplication": {
+    "canonical_exact_production_file_groups": [],
+    "canonical_meaningful_exact_function_groups": [],
+    "exact_production_file_groups": [],
+    "meaningful_exact_function_groups": []
+  },
+  "repositories": [
+    {"repository": "auth-service", "package": "viksa_auth", "passed": true},
+    {"repository": "builder-service", "package": "viksa_builder", "passed": true},
+    {"repository": "chat-service", "package": "viksa_chat", "passed": true},
+    {"repository": "devspace-service", "package": "viksa_devspace", "passed": true},
+    {"repository": "directory-sync-service", "package": "viksa_directory_sync", "passed": true},
+    {"repository": "headless-service", "package": "viksa_headless", "passed": true},
+    {"repository": "hosted-images-service", "package": "viksa_hosted_images", "passed": true},
+    {"repository": "marketplace-service", "package": "viksa_marketplace", "passed": true},
+    {"repository": "mcp-gateway-service", "package": "viksa_mcp_gateway", "passed": true},
+    {"repository": "pulse-service", "package": "viksa_pulse", "passed": true},
+    {"repository": "scheduler-service", "package": "viksa_scheduler", "passed": true},
+    {"repository": "trace-service", "package": "viksa_trace", "passed": true},
+    {"repository": "volt-engine-service", "package": "viksa_volt_engine", "passed": true},
+    {"repository": "worker-service", "package": "viksa_worker", "passed": true},
+    {"repository": "workflow-service", "package": "viksa_workflow", "passed": true}
+  ],
+  "schema_version": 1,
+  "summary": {
+    "canonical_duplicate_file_groups": 0,
+    "canonical_duplicate_function_groups": 0,
+    "duplicate_file_groups": 0,
+    "duplicate_function_groups": 0,
+    "passed": true,
+    "repositories_passing": 15,
+    "repository_count": 15
+  },
+  "verified_at": "2026-08-04",
+  "workspace": "/Users/flagship"
+}
