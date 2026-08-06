@@ -6,21 +6,171 @@
     "meaningful_exact_function_groups": []
   },
   "repositories": [
-    {"repository": "auth-service", "package": "viksa_auth", "passed": true},
-    {"repository": "builder-service", "package": "viksa_builder", "passed": true},
-    {"repository": "chat-service", "package": "viksa_chat", "passed": true},
-    {"repository": "devspace-service", "package": "viksa_devspace", "passed": true},
-    {"repository": "directory-sync-service", "package": "viksa_directory_sync", "passed": true},
-    {"repository": "headless-service", "package": "viksa_headless", "passed": true},
-    {"repository": "hosted-images-service", "package": "viksa_hosted_images", "passed": true},
-    {"repository": "marketplace-service", "package": "viksa_marketplace", "passed": true},
-    {"repository": "mcp-gateway-service", "package": "viksa_mcp_gateway", "passed": true},
-    {"repository": "pulse-service", "package": "viksa_pulse", "passed": true},
-    {"repository": "scheduler-service", "package": "viksa_scheduler", "passed": true},
-    {"repository": "trace-service", "package": "viksa_trace", "passed": true},
-    {"repository": "volt-engine-service", "package": "viksa_volt_engine", "passed": true},
-    {"repository": "worker-service", "package": "viksa_worker", "passed": true},
-    {"repository": "workflow-service", "package": "viksa_workflow", "passed": true}
+    {
+      "dependency_violations": [],
+      "di_violations": [],
+      "legacy_behavior_modules": [],
+      "missing_layers": [],
+      "mypy_configuration_errors": [],
+      "package": "viksa_auth",
+      "parse_errors": [],
+      "passed": true,
+      "repository": "auth-service"
+    },
+    {
+      "dependency_violations": [],
+      "di_violations": [],
+      "legacy_behavior_modules": [],
+      "missing_layers": [],
+      "mypy_configuration_errors": [],
+      "package": "viksa_builder",
+      "parse_errors": [],
+      "passed": true,
+      "repository": "builder-service"
+    },
+    {
+      "dependency_violations": [],
+      "di_violations": [],
+      "legacy_behavior_modules": [],
+      "missing_layers": [],
+      "mypy_configuration_errors": [],
+      "package": "viksa_chat",
+      "parse_errors": [],
+      "passed": true,
+      "repository": "chat-service"
+    },
+    {
+      "dependency_violations": [],
+      "di_violations": [],
+      "legacy_behavior_modules": [],
+      "missing_layers": [],
+      "mypy_configuration_errors": [],
+      "package": "viksa_devspace",
+      "parse_errors": [],
+      "passed": true,
+      "repository": "devspace-service"
+    },
+    {
+      "dependency_violations": [],
+      "di_violations": [],
+      "legacy_behavior_modules": [],
+      "missing_layers": [],
+      "mypy_configuration_errors": [],
+      "package": "viksa_directory_sync",
+      "parse_errors": [],
+      "passed": true,
+      "repository": "directory-sync-service"
+    },
+    {
+      "dependency_violations": [],
+      "di_violations": [],
+      "legacy_behavior_modules": [],
+      "missing_layers": [],
+      "mypy_configuration_errors": [],
+      "package": "viksa_headless",
+      "parse_errors": [],
+      "passed": true,
+      "repository": "headless-service"
+    },
+    {
+      "dependency_violations": [],
+      "di_violations": [],
+      "legacy_behavior_modules": [],
+      "missing_layers": [],
+      "mypy_configuration_errors": [],
+      "package": "viksa_hosted_images",
+      "parse_errors": [],
+      "passed": true,
+      "repository": "hosted-images-service"
+    },
+    {
+      "dependency_violations": [],
+      "di_violations": [],
+      "legacy_behavior_modules": [],
+      "missing_layers": [],
+      "mypy_configuration_errors": [],
+      "package": "viksa_marketplace",
+      "parse_errors": [],
+      "passed": true,
+      "repository": "marketplace-service"
+    },
+    {
+      "dependency_violations": [],
+      "di_violations": [],
+      "legacy_behavior_modules": [],
+      "missing_layers": [],
+      "mypy_configuration_errors": [],
+      "package": "viksa_mcp_gateway",
+      "parse_errors": [],
+      "passed": true,
+      "repository": "mcp-gateway-service"
+    },
+    {
+      "dependency_violations": [],
+      "di_violations": [],
+      "legacy_behavior_modules": [],
+      "missing_layers": [],
+      "mypy_configuration_errors": [],
+      "package": "viksa_pulse",
+      "parse_errors": [],
+      "passed": true,
+      "repository": "pulse-service"
+    },
+    {
+      "dependency_violations": [],
+      "di_violations": [],
+      "legacy_behavior_modules": [],
+      "missing_layers": [],
+      "mypy_configuration_errors": [],
+      "package": "viksa_scheduler",
+      "parse_errors": [],
+      "passed": true,
+      "repository": "scheduler-service"
+    },
+    {
+      "dependency_violations": [],
+      "di_violations": [],
+      "legacy_behavior_modules": [],
+      "missing_layers": [],
+      "mypy_configuration_errors": [],
+      "package": "viksa_trace",
+      "parse_errors": [],
+      "passed": true,
+      "repository": "trace-service"
+    },
+    {
+      "dependency_violations": [],
+      "di_violations": [],
+      "legacy_behavior_modules": [],
+      "missing_layers": [],
+      "mypy_configuration_errors": [],
+      "package": "viksa_volt_engine",
+      "parse_errors": [],
+      "passed": true,
+      "repository": "volt-engine-service"
+    },
+    {
+      "dependency_violations": [],
+      "di_violations": [],
+      "legacy_behavior_modules": [],
+      "missing_layers": [],
+      "mypy_configuration_errors": [],
+      "package": "viksa_worker",
+      "parse_errors": [],
+      "passed": true,
+      "repository": "worker-service"
+    },
+    {
+      "dependency_violations": [],
+      "di_violations": [],
+      "legacy_behavior_modules": [],
+      "missing_layers": [],
+      "mypy_configuration_errors": [],
+      "package": "viksa_workflow",
+      "parse_errors": [],
+      "passed": true,
+      "repository": "workflow-service"
+    }
   ],
   "schema_version": 1,
   "summary": {
@@ -32,6 +182,5 @@
     "repositories_passing": 15,
     "repository_count": 15
   },
-  "verified_at": "2026-08-04",
   "workspace": "/Users/flagship"
 }
