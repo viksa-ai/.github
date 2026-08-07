@@ -28,7 +28,8 @@ src/<service_package>/
 during migration. New behavior belongs under `src/`. The dependency direction
 is domain <- application/ports <- infrastructure/entrypoints <- bootstrap.
 Domain code cannot import a framework. Application and ports cannot import an
-adapter. Entrypoints cannot construct repositories, clients, or services.
+adapter or the service compatibility namespace. Entrypoints cannot construct
+repositories, clients, or services.
 
 Run the contract from this repository:
 

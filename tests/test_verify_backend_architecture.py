@@ -133,6 +133,36 @@ def test_relative_imports_cannot_bypass_layer_direction(tmp_path: Path) -> None:
     assert len(violations) == 2
 
 
+def test_inner_layers_cannot_depend_on_compatibility_namespace(
+    tmp_path: Path,
+) -> None:
+    service = _make_service(tmp_path, "alpha-service", "viksa_alpha")
+    (service / "src" / "viksa_alpha" / "domain" / "bad.py").write_text(
+        "from viksa_alpha.compat.types import ResourceType\n",
+        encoding="utf-8",
+    )
+    (service / "src" / "viksa_alpha" / "application" / "bad.py").write_text(
+        "from ..compat.ids import get_resource_id\n",
+        encoding="utf-8",
+    )
+    (service / "src" / "viksa_alpha" / "ports" / "bad.py").write_text(
+        "from viksa_alpha.compat.repositories import Repository\n",
+        encoding="utf-8",
+    )
+
+    result = MODULE.verify(
+        tmp_path, _contract([{"path": "alpha-service", "package": "viksa_alpha"}])
+    )
+
+    violations = result["repositories"][0]["dependency_violations"]
+    assert {item["reason"] for item in violations} == {
+        "application depends on compat",
+        "domain depends on compat",
+        "ports depends on compat",
+    }
+    assert len(violations) == 3
+
+
 def test_canonical_package_cannot_hide_dependencies_behind_legacy_namespaces(
     tmp_path: Path,
 ) -> None:

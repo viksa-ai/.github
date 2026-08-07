@@ -357,12 +357,19 @@ def _forbidden_import_reason(
         target_layer = target[len(prefix) :].split(".", 1)[0]
 
     if source_layer == "domain":
-        if target_layer in {"application", "ports", "infrastructure", "entrypoints", "bootstrap"}:
+        if target_layer in {
+            "application",
+            "ports",
+            "infrastructure",
+            "entrypoints",
+            "bootstrap",
+            "compat",
+        }:
             return f"domain depends on {target_layer}"
         if target.split(".", 1)[0] in forbidden_domain_frameworks:
             return f"domain depends on framework {target.split('.', 1)[0]}"
     elif source_layer in {"application", "ports"}:
-        if target_layer in {"infrastructure", "entrypoints", "bootstrap"}:
+        if target_layer in {"infrastructure", "entrypoints", "bootstrap", "compat"}:
             return f"{source_layer} depends on {target_layer}"
     elif source_layer == "infrastructure" and target_layer in {"entrypoints", "bootstrap"}:
         return f"infrastructure depends on {target_layer}"
