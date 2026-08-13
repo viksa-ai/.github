@@ -6,7 +6,7 @@ machine-readable report produced by `scripts/verify_backend_architecture.py`.
 
 ## Scope and safety boundary
 
-The completed work is source-code and local verification work across the 15
+The completed work is source-code and local verification work across the 14
 Python backend repositories, `ui-service`, and the shared
 `viksa-platform-runtime` package. It does not mutate Kubernetes, GKE, cloud
 resources, production databases, production quotas, live secrets, HMAC keys,
@@ -112,11 +112,10 @@ deliberately covers 113 source files and 21 test files.
 | Trace | 159 passed | 103 files |
 | Volt Engine | 630 passed | 452 files |
 | Worker | 80 passed | 103 files |
-| Workflow | 73 passed | 103 files |
 | Public `viksa-ai` SDK | 45 passed | 34 files |
 | Shared platform runtime | 90 passed | 134 files |
 
-The fleet verifier separately reports 15/15 repositories passing, with empty
+The fleet verifier separately reports 14/14 repositories passing, with empty
 arrays for canonical and global exact files and meaningful exact functions.
 Its own 14-test mutation/regression suite passes. Typed wheels and isolated
 canonical import smoke tests provide packaging evidence; they are not a
@@ -163,10 +162,7 @@ durable cleanup inboxes/outboxes with bounded inventory recovery. Marketplace
 persists a tenant-bound installation-cleanup ledger and now independently scans
 tenant databases for failed or expired operations with a hard per-pass bound,
 per-tenant failure isolation, and a fair in-process scan cursor; atomic claims
-fence multiple replicas. Workflow now persists deletion intent before cleanup,
-discovers pending work through a bounded account inventory, isolates failures
-by account and item, checkpoints capped retries, and owns its periodic worker
-through application lifespan DI.
+fence multiple replicas.
 
 Stable operation identities, expiring leases, retryable states, idempotent
 downstream calls, and completion markers allow abandoned work to resume. Hard
@@ -177,9 +173,9 @@ inference.
 This proves application behavior under tested retries, crashes, duplicate
 delivery, stale leases, and partial downstream failure. It does not execute a
 live deletion or prove every external provider's production behavior.
-Marketplace and Workflow currently derive inventory from non-system Mongo
-database names because no authoritative account-catalog port is available;
-that adapter is replaceable when such a catalog exists. Marketplace's fair
+Marketplace currently derives inventory from non-system Mongo database names
+because no authoritative account-catalog port is available; that adapter is
+replaceable when such a catalog exists. Marketplace's fair
 scan cursor resets after process restart, and its cleanup operation has no
 lease heartbeat, per-operation timeout, or poison-item quarantine, so a hung
 provider can stall one pass and work that exceeds the lease can be reclaimed.

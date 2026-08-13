@@ -39,7 +39,6 @@ Our codebase is separated into independent, highly focused repositories to ensur
 *   **volt-engine-service**: Volt Channel Hub (Slack, Teams, Telegram, WhatsApp, Instagram webhooks) and channel turn engine.
 *   **[volt-engine-service](https://github.com/viksa-ai/volt-engine-service)**: Core Volt execution engine and high-performance Redis prompt cache.
 *   **[marketplace-service](https://github.com/viksa-ai/marketplace-service)**: Public and private agent/workforce listings, installations, and billing provider integrations.
-*   **[workflow-service](https://github.com/viksa-ai/workflow-service)**: Multi-agent workflow orchestration and state tracking.
 *   **[scheduler-service](https://github.com/viksa-ai/scheduler-service)**: Cron-style job scheduler and trigger fan-out.
 *   **[worker-service](https://github.com/viksa-ai/worker-service)**: Background state reconciliation and long-running pipelines.
 *   **[devspace-service](https://github.com/viksa-ai/devspace-service)**: Ephemeral, in-cluster developer environments for editing and testing agents.

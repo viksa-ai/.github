@@ -159,17 +159,6 @@
       "parse_errors": [],
       "passed": true,
       "repository": "worker-service"
-    },
-    {
-      "dependency_violations": [],
-      "di_violations": [],
-      "legacy_behavior_modules": [],
-      "missing_layers": [],
-      "mypy_configuration_errors": [],
-      "package": "viksa_workflow",
-      "parse_errors": [],
-      "passed": true,
-      "repository": "workflow-service"
     }
   ],
   "schema_version": 1,
@@ -179,8 +168,8 @@
     "duplicate_file_groups": 0,
     "duplicate_function_groups": 0,
     "passed": true,
-    "repositories_passing": 15,
-    "repository_count": 15
+    "repositories_passing": 14,
+    "repository_count": 14
   },
   "workspace": "/Users/flagship"
 }

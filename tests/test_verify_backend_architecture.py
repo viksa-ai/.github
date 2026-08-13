@@ -367,4 +367,4 @@ def test_contract_file_is_valid_json() -> None:
     contract_path = SCRIPT.parents[1] / "quality" / "backend-architecture-contract.json"
     value = json.loads(contract_path.read_text(encoding="utf-8"))
     assert value["schema_version"] == 1
-    assert len(value["repositories"]) == 15
+    assert len(value["repositories"]) == 14

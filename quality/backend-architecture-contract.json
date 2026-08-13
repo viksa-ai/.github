@@ -30,8 +30,7 @@
     {"path": "scheduler-service", "package": "viksa_scheduler"},
     {"path": "trace-service", "package": "viksa_trace"},
     {"path": "volt-engine-service", "package": "viksa_volt_engine"},
-    {"path": "worker-service", "package": "viksa_worker"},
-    {"path": "workflow-service", "package": "viksa_workflow"}
+    {"path": "worker-service", "package": "viksa_worker"}
   ],
   "legacy_source_directories": [
     "api",
