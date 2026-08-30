@@ -9,28 +9,28 @@
     "bootstrap"
   ],
   "repositories": [
-    {"path": "auth-service", "package": "viksa_auth"},
-    {"path": "builder-service", "package": "viksa_builder"},
-    {"path": "chat-service", "package": "viksa_chat"},
-    {"path": "devspace-service", "package": "viksa_devspace"},
-    {"path": "directory-sync-service", "package": "viksa_directory_sync"},
-    {"path": "headless-service", "package": "viksa_headless"},
+    {"path": "auth-service", "package": "maeyr_auth"},
+    {"path": "builder-service", "package": "maeyr_builder"},
+    {"path": "chat-service", "package": "maeyr_chat"},
+    {"path": "devspace-service", "package": "maeyr_devspace"},
+    {"path": "directory-sync-service", "package": "maeyr_directory_sync"},
+    {"path": "headless-service", "package": "maeyr_headless"},
     {
       "path": "hosted-images-service",
-      "package": "viksa_hosted_images",
+      "package": "maeyr_hosted_images",
       "legacy_source_roots": [
         "chrona-builder",
         "chrona-worker-cloud",
         "chrona-worker-secure"
       ]
     },
-    {"path": "marketplace-service", "package": "viksa_marketplace"},
-    {"path": "mcp-gateway-service", "package": "viksa_mcp_gateway"},
-    {"path": "pulse-service", "package": "viksa_pulse"},
-    {"path": "scheduler-service", "package": "viksa_scheduler"},
-    {"path": "trace-service", "package": "viksa_trace"},
-    {"path": "volt-engine-service", "package": "viksa_volt_engine"},
-    {"path": "worker-service", "package": "viksa_worker"}
+    {"path": "marketplace-service", "package": "maeyr_marketplace"},
+    {"path": "mcp-gateway-service", "package": "maeyr_mcp_gateway"},
+    {"path": "pulse-service", "package": "maeyr_pulse"},
+    {"path": "scheduler-service", "package": "maeyr_scheduler"},
+    {"path": "trace-service", "package": "maeyr_trace"},
+    {"path": "volt-engine-service", "package": "maeyr_volt_engine"},
+    {"path": "worker-service", "package": "maeyr_worker"}
   ],
   "legacy_source_directories": [
     "api",

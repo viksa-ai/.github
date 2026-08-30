@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the common DDD/DI/type/duplication contract across Viksa backends."""
+"""Verify the common DDD/DI/type/duplication contract across Maeyr backends."""
 
 from __future__ import annotations
 

@@ -80,6 +80,6 @@ local.env
 .env.local
 
 # Service-account / cloud credentials JSON (must come from secret manager / volume)
-**/viksaai-*.json
+**/maeyr-*.json
 **/service-account-*.json
 **/google-credentials*.json

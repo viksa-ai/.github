@@ -12,7 +12,7 @@
       "legacy_behavior_modules": [],
       "missing_layers": [],
       "mypy_configuration_errors": [],
-      "package": "viksa_auth",
+      "package": "maeyr_auth",
       "parse_errors": [],
       "passed": true,
       "repository": "auth-service"
@@ -23,7 +23,7 @@
       "legacy_behavior_modules": [],
       "missing_layers": [],
       "mypy_configuration_errors": [],
-      "package": "viksa_builder",
+      "package": "maeyr_builder",
       "parse_errors": [],
       "passed": true,
       "repository": "builder-service"
@@ -34,7 +34,7 @@
       "legacy_behavior_modules": [],
       "missing_layers": [],
       "mypy_configuration_errors": [],
-      "package": "viksa_chat",
+      "package": "maeyr_chat",
       "parse_errors": [],
       "passed": true,
       "repository": "chat-service"
@@ -45,7 +45,7 @@
       "legacy_behavior_modules": [],
       "missing_layers": [],
       "mypy_configuration_errors": [],
-      "package": "viksa_devspace",
+      "package": "maeyr_devspace",
       "parse_errors": [],
       "passed": true,
       "repository": "devspace-service"
@@ -56,7 +56,7 @@
       "legacy_behavior_modules": [],
       "missing_layers": [],
       "mypy_configuration_errors": [],
-      "package": "viksa_directory_sync",
+      "package": "maeyr_directory_sync",
       "parse_errors": [],
       "passed": true,
       "repository": "directory-sync-service"
@@ -67,7 +67,7 @@
       "legacy_behavior_modules": [],
       "missing_layers": [],
       "mypy_configuration_errors": [],
-      "package": "viksa_headless",
+      "package": "maeyr_headless",
       "parse_errors": [],
       "passed": true,
       "repository": "headless-service"
@@ -78,7 +78,7 @@
       "legacy_behavior_modules": [],
       "missing_layers": [],
       "mypy_configuration_errors": [],
-      "package": "viksa_hosted_images",
+      "package": "maeyr_hosted_images",
       "parse_errors": [],
       "passed": true,
       "repository": "hosted-images-service"
@@ -89,7 +89,7 @@
       "legacy_behavior_modules": [],
       "missing_layers": [],
       "mypy_configuration_errors": [],
-      "package": "viksa_marketplace",
+      "package": "maeyr_marketplace",
       "parse_errors": [],
       "passed": true,
       "repository": "marketplace-service"
@@ -100,7 +100,7 @@
       "legacy_behavior_modules": [],
       "missing_layers": [],
       "mypy_configuration_errors": [],
-      "package": "viksa_mcp_gateway",
+      "package": "maeyr_mcp_gateway",
       "parse_errors": [],
       "passed": true,
       "repository": "mcp-gateway-service"
@@ -111,7 +111,7 @@
       "legacy_behavior_modules": [],
       "missing_layers": [],
       "mypy_configuration_errors": [],
-      "package": "viksa_pulse",
+      "package": "maeyr_pulse",
       "parse_errors": [],
       "passed": true,
       "repository": "pulse-service"
@@ -122,7 +122,7 @@
       "legacy_behavior_modules": [],
       "missing_layers": [],
       "mypy_configuration_errors": [],
-      "package": "viksa_scheduler",
+      "package": "maeyr_scheduler",
       "parse_errors": [],
       "passed": true,
       "repository": "scheduler-service"
@@ -133,7 +133,7 @@
       "legacy_behavior_modules": [],
       "missing_layers": [],
       "mypy_configuration_errors": [],
-      "package": "viksa_trace",
+      "package": "maeyr_trace",
       "parse_errors": [],
       "passed": true,
       "repository": "trace-service"
@@ -144,7 +144,7 @@
       "legacy_behavior_modules": [],
       "missing_layers": [],
       "mypy_configuration_errors": [],
-      "package": "viksa_volt_engine",
+      "package": "maeyr_volt_engine",
       "parse_errors": [],
       "passed": true,
       "repository": "volt-engine-service"
@@ -155,7 +155,7 @@
       "legacy_behavior_modules": [],
       "missing_layers": [],
       "mypy_configuration_errors": [],
-      "package": "viksa_worker",
+      "package": "maeyr_worker",
       "parse_errors": [],
       "passed": true,
       "repository": "worker-service"

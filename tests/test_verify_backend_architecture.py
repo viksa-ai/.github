@@ -41,14 +41,14 @@ def _make_service(root: Path, repo: str, package: str) -> Path:
 
 
 def test_clean_canonical_service_passes(tmp_path: Path) -> None:
-    service = _make_service(tmp_path, "alpha-service", "viksa_alpha")
-    (service / "src" / "viksa_alpha" / "domain" / "widget.py").write_text(
+    service = _make_service(tmp_path, "alpha-service", "maeyr_alpha")
+    (service / "src" / "maeyr_alpha" / "domain" / "widget.py").write_text(
         "from dataclasses import dataclass\n\n@dataclass(frozen=True)\nclass Widget:\n    name: str\n",
         encoding="utf-8",
     )
 
     result = MODULE.verify(
-        tmp_path, _contract([{"path": "alpha-service", "package": "viksa_alpha"}])
+        tmp_path, _contract([{"path": "alpha-service", "package": "maeyr_alpha"}])
     )
 
     assert result["summary"]["passed"] is True
@@ -56,16 +56,16 @@ def test_clean_canonical_service_passes(tmp_path: Path) -> None:
 
 def test_reports_layer_di_and_type_configuration_failures(tmp_path: Path) -> None:
     service = tmp_path / "broken-service"
-    domain = service / "src" / "viksa_broken" / "domain"
+    domain = service / "src" / "maeyr_broken" / "domain"
     domain.mkdir(parents=True)
     (domain / "bad.py").write_text(
-        "from fastapi import FastAPI\nfrom viksa_broken.infrastructure.db import UserRepository\n\n"
+        "from fastapi import FastAPI\nfrom maeyr_broken.infrastructure.db import UserRepository\n\n"
         "repository = UserRepository()\n",
         encoding="utf-8",
     )
 
     result = MODULE.verify(
-        tmp_path, _contract([{"path": "broken-service", "package": "viksa_broken"}])
+        tmp_path, _contract([{"path": "broken-service", "package": "maeyr_broken"}])
     )
     repository = result["repositories"][0]
 
@@ -79,7 +79,7 @@ def test_reports_layer_di_and_type_configuration_failures(tmp_path: Path) -> Non
 def test_mypy_configuration_cannot_silence_imported_production_modules(
     tmp_path: Path,
 ) -> None:
-    service = _make_service(tmp_path, "alpha-service", "viksa_alpha")
+    service = _make_service(tmp_path, "alpha-service", "maeyr_alpha")
     with (service / "pyproject.toml").open("a", encoding="utf-8") as stream:
         stream.write(
             "\n[[tool.mypy.overrides]]\nmodule = ['services.*']\n"
@@ -87,7 +87,7 @@ def test_mypy_configuration_cannot_silence_imported_production_modules(
         )
 
     result = MODULE.verify(
-        tmp_path, _contract([{"path": "alpha-service", "package": "viksa_alpha"}])
+        tmp_path, _contract([{"path": "alpha-service", "package": "maeyr_alpha"}])
     )
 
     assert result["repositories"][0]["mypy_configuration_errors"] == [
@@ -96,18 +96,18 @@ def test_mypy_configuration_cannot_silence_imported_production_modules(
 
 
 def test_legacy_modules_must_be_import_only_facades(tmp_path: Path) -> None:
-    service = _make_service(tmp_path, "alpha-service", "viksa_alpha")
+    service = _make_service(tmp_path, "alpha-service", "maeyr_alpha")
     legacy = service / "services"
     legacy.mkdir()
     (legacy / "facade.py").write_text(
-        "from viksa_alpha.application.reconcile import reconcile\n", encoding="utf-8"
+        "from maeyr_alpha.application.reconcile import reconcile\n", encoding="utf-8"
     )
     (legacy / "behavior.py").write_text(
         "def legacy_reconcile() -> None:\n    return None\n", encoding="utf-8"
     )
 
     result = MODULE.verify(
-        tmp_path, _contract([{"path": "alpha-service", "package": "viksa_alpha"}])
+        tmp_path, _contract([{"path": "alpha-service", "package": "maeyr_alpha"}])
     )
 
     violations = result["repositories"][0]["legacy_behavior_modules"]
@@ -116,42 +116,42 @@ def test_legacy_modules_must_be_import_only_facades(tmp_path: Path) -> None:
 
 
 def test_relative_imports_cannot_bypass_layer_direction(tmp_path: Path) -> None:
-    service = _make_service(tmp_path, "alpha-service", "viksa_alpha")
-    (service / "src" / "viksa_alpha" / "domain" / "bad.py").write_text(
+    service = _make_service(tmp_path, "alpha-service", "maeyr_alpha")
+    (service / "src" / "maeyr_alpha" / "domain" / "bad.py").write_text(
         "from ..infrastructure import persistence\n", encoding="utf-8"
     )
-    (service / "src" / "viksa_alpha" / "application" / "bad.py").write_text(
+    (service / "src" / "maeyr_alpha" / "application" / "bad.py").write_text(
         "from .. import infrastructure\n", encoding="utf-8"
     )
 
     result = MODULE.verify(
-        tmp_path, _contract([{"path": "alpha-service", "package": "viksa_alpha"}])
+        tmp_path, _contract([{"path": "alpha-service", "package": "maeyr_alpha"}])
     )
 
     violations = result["repositories"][0]["dependency_violations"]
-    assert {item["target"] for item in violations} == {"viksa_alpha.infrastructure"}
+    assert {item["target"] for item in violations} == {"maeyr_alpha.infrastructure"}
     assert len(violations) == 2
 
 
 def test_inner_layers_cannot_depend_on_compatibility_namespace(
     tmp_path: Path,
 ) -> None:
-    service = _make_service(tmp_path, "alpha-service", "viksa_alpha")
-    (service / "src" / "viksa_alpha" / "domain" / "bad.py").write_text(
-        "from viksa_alpha.compat.types import ResourceType\n",
+    service = _make_service(tmp_path, "alpha-service", "maeyr_alpha")
+    (service / "src" / "maeyr_alpha" / "domain" / "bad.py").write_text(
+        "from maeyr_alpha.compat.types import ResourceType\n",
         encoding="utf-8",
     )
-    (service / "src" / "viksa_alpha" / "application" / "bad.py").write_text(
+    (service / "src" / "maeyr_alpha" / "application" / "bad.py").write_text(
         "from ..compat.ids import get_resource_id\n",
         encoding="utf-8",
     )
-    (service / "src" / "viksa_alpha" / "ports" / "bad.py").write_text(
-        "from viksa_alpha.compat.repositories import Repository\n",
+    (service / "src" / "maeyr_alpha" / "ports" / "bad.py").write_text(
+        "from maeyr_alpha.compat.repositories import Repository\n",
         encoding="utf-8",
     )
 
     result = MODULE.verify(
-        tmp_path, _contract([{"path": "alpha-service", "package": "viksa_alpha"}])
+        tmp_path, _contract([{"path": "alpha-service", "package": "maeyr_alpha"}])
     )
 
     violations = result["repositories"][0]["dependency_violations"]
@@ -166,13 +166,13 @@ def test_inner_layers_cannot_depend_on_compatibility_namespace(
 def test_canonical_package_cannot_hide_dependencies_behind_legacy_namespaces(
     tmp_path: Path,
 ) -> None:
-    service = _make_service(tmp_path, "alpha-service", "viksa_alpha")
-    (service / "src" / "viksa_alpha" / "infrastructure" / "bad.py").write_text(
+    service = _make_service(tmp_path, "alpha-service", "maeyr_alpha")
+    (service / "src" / "maeyr_alpha" / "infrastructure" / "bad.py").write_text(
         "from services.reconcile import LegacyReconciler\n", encoding="utf-8"
     )
 
     result = MODULE.verify(
-        tmp_path, _contract([{"path": "alpha-service", "package": "viksa_alpha"}])
+        tmp_path, _contract([{"path": "alpha-service", "package": "maeyr_alpha"}])
     )
 
     violations = result["repositories"][0]["dependency_violations"]
@@ -183,17 +183,17 @@ def test_canonical_package_cannot_hide_dependencies_behind_legacy_namespaces(
 def test_dynamic_loaders_cannot_hide_legacy_namespace_dependencies(
     tmp_path: Path,
 ) -> None:
-    service = _make_service(tmp_path, "alpha-service", "viksa_alpha")
-    (service / "src" / "viksa_alpha" / "infrastructure" / "bad.py").write_text(
+    service = _make_service(tmp_path, "alpha-service", "maeyr_alpha")
+    (service / "src" / "maeyr_alpha" / "infrastructure" / "bad.py").write_text(
         "import importlib\n\n"
-        "from viksa_alpha.compat import load_attribute\n\n"
+        "from maeyr_alpha.compat import load_attribute\n\n"
         "service = load_attribute('services.reconcile', 'service')\n"
         "factory = importlib.import_module('services.factory')\n",
         encoding="utf-8",
     )
 
     result = MODULE.verify(
-        tmp_path, _contract([{"path": "alpha-service", "package": "viksa_alpha"}])
+        tmp_path, _contract([{"path": "alpha-service", "package": "maeyr_alpha"}])
     )
 
     violations = result["repositories"][0]["dependency_violations"]
@@ -207,17 +207,17 @@ def test_dynamic_loaders_cannot_hide_legacy_namespace_dependencies(
 def test_renamed_loader_imports_cannot_hide_legacy_dependencies(
     tmp_path: Path,
 ) -> None:
-    service = _make_service(tmp_path, "alpha-service", "viksa_alpha")
-    (service / "src" / "viksa_alpha" / "infrastructure" / "bad.py").write_text(
+    service = _make_service(tmp_path, "alpha-service", "maeyr_alpha")
+    (service / "src" / "maeyr_alpha" / "infrastructure" / "bad.py").write_text(
         "import importlib as _imports\n"
-        "from viksa_alpha.compat import load_attribute as _load_compat_attribute\n\n"
+        "from maeyr_alpha.compat import load_attribute as _load_compat_attribute\n\n"
         "service = _load_compat_attribute('services.reconcile', 'service')\n"
         "factory = _imports.import_module('services.factory')\n",
         encoding="utf-8",
     )
 
     result = MODULE.verify(
-        tmp_path, _contract([{"path": "alpha-service", "package": "viksa_alpha"}])
+        tmp_path, _contract([{"path": "alpha-service", "package": "maeyr_alpha"}])
     )
 
     violations = result["repositories"][0]["dependency_violations"]
@@ -230,9 +230,9 @@ def test_renamed_loader_imports_cannot_hide_legacy_dependencies(
 def test_literal_loader_registries_cannot_hide_legacy_dependencies(
     tmp_path: Path,
 ) -> None:
-    service = _make_service(tmp_path, "alpha-service", "viksa_alpha")
-    (service / "src" / "viksa_alpha" / "infrastructure" / "bad.py").write_text(
-        "from viksa_alpha.compat import load_attribute as _load\n\n"
+    service = _make_service(tmp_path, "alpha-service", "maeyr_alpha")
+    (service / "src" / "maeyr_alpha" / "infrastructure" / "bad.py").write_text(
+        "from maeyr_alpha.compat import load_attribute as _load\n\n"
         "_EXPORTS = {'service': ('services.reconcile', 'service')}\n\n"
         "def resolve(name: str) -> object:\n"
         "    module_name, attribute_name = _EXPORTS[name]\n"
@@ -241,7 +241,7 @@ def test_literal_loader_registries_cannot_hide_legacy_dependencies(
     )
 
     result = MODULE.verify(
-        tmp_path, _contract([{"path": "alpha-service", "package": "viksa_alpha"}])
+        tmp_path, _contract([{"path": "alpha-service", "package": "maeyr_alpha"}])
     )
 
     violations = result["repositories"][0]["dependency_violations"]
@@ -252,14 +252,14 @@ def test_literal_loader_registries_cannot_hide_legacy_dependencies(
 def test_non_loader_data_maps_are_not_treated_as_module_registries(
     tmp_path: Path,
 ) -> None:
-    service = _make_service(tmp_path, "alpha-service", "viksa_alpha")
-    (service / "src" / "viksa_alpha" / "infrastructure" / "good.py").write_text(
+    service = _make_service(tmp_path, "alpha-service", "maeyr_alpha")
+    (service / "src" / "maeyr_alpha" / "infrastructure" / "good.py").write_text(
         "SERVICE_LABELS = {'production': 'services.production'}\n",
         encoding="utf-8",
     )
 
     result = MODULE.verify(
-        tmp_path, _contract([{"path": "alpha-service", "package": "viksa_alpha"}])
+        tmp_path, _contract([{"path": "alpha-service", "package": "maeyr_alpha"}])
     )
 
     assert result["repositories"][0]["dependency_violations"] == []
@@ -280,11 +280,11 @@ def reconcile(items: list[int]) -> int:
     return total
 """.lstrip()
     for name in ("alpha", "beta"):
-        service = _make_service(tmp_path, f"{name}-service", f"viksa_{name}")
-        (service / "src" / f"viksa_{name}" / "application" / "reconcile.py").write_text(
+        service = _make_service(tmp_path, f"{name}-service", f"maeyr_{name}")
+        (service / "src" / f"maeyr_{name}" / "application" / "reconcile.py").write_text(
             repeated, encoding="utf-8"
         )
-        repositories.append({"path": f"{name}-service", "package": f"viksa_{name}"})
+        repositories.append({"path": f"{name}-service", "package": f"maeyr_{name}"})
 
     result = MODULE.verify(tmp_path, _contract(repositories))
 
@@ -296,7 +296,7 @@ def reconcile(items: list[int]) -> int:
 
 
 def test_detects_exact_behavior_copied_inside_one_repository(tmp_path: Path) -> None:
-    service = _make_service(tmp_path, "alpha-service", "viksa_alpha")
+    service = _make_service(tmp_path, "alpha-service", "maeyr_alpha")
     repeated = """
 def reconcile(items: list[int]) -> int:
     'Substantial repeated behavior.'
@@ -309,12 +309,12 @@ def reconcile(items: list[int]) -> int:
             total -= item
     return total
 """.lstrip()
-    application = service / "src" / "viksa_alpha" / "application"
+    application = service / "src" / "maeyr_alpha" / "application"
     (application / "first.py").write_text(repeated, encoding="utf-8")
     (application / "second.py").write_text(repeated, encoding="utf-8")
 
     result = MODULE.verify(
-        tmp_path, _contract([{"path": "alpha-service", "package": "viksa_alpha"}])
+        tmp_path, _contract([{"path": "alpha-service", "package": "maeyr_alpha"}])
     )
 
     assert result["summary"]["duplicate_function_groups"] == 1
@@ -325,7 +325,7 @@ def reconcile(items: list[int]) -> int:
 
 
 def test_configured_nested_runtime_roots_are_audited(tmp_path: Path) -> None:
-    service = _make_service(tmp_path, "images-service", "viksa_images")
+    service = _make_service(tmp_path, "images-service", "maeyr_images")
     cloud = service / "cloud-runtime"
     secure = service / "secure-runtime"
     cloud.mkdir()
@@ -347,7 +347,7 @@ def execute(payload: dict[str, object]) -> dict[str, object]:
     repositories: list[dict[str, object]] = [
         {
             "path": "images-service",
-            "package": "viksa_images",
+            "package": "maeyr_images",
             "legacy_source_roots": ["cloud-runtime", "secure-runtime"],
         }
     ]
